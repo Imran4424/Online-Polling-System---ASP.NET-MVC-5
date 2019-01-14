@@ -64,6 +64,18 @@ namespace OnlinePollingSystem.Models
 
     public class RegisterViewModel
     {
+
+        //Custom Start
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public string Country { get; set; }
+
+        //Custom End
+
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
