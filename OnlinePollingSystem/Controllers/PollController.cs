@@ -31,5 +31,16 @@ namespace OnlinePollingSystem.Controllers
 
             return View(polls);
         }
+
+        // GET: Poll / Timeline 
+
+        public ActionResult Timeline()
+        {
+            string currentUserId = User.Identity.GetUserId();
+
+            var polls = _context.Polls.Where(p => p.UserIdentity == currentUserId).ToList();
+
+            return View(polls);
+        }
     }
 }
