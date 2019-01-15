@@ -43,6 +43,9 @@ namespace OnlinePollingSystem.Controllers
             return View(polls);
         }
 
+        // GET: Poll / Details
+        
 
+        
     }
 }
