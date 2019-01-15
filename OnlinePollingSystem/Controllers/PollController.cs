@@ -27,9 +27,9 @@ namespace OnlinePollingSystem.Controllers
 
         public ActionResult Index()
         {
-            var polls = _context.Polls
+            var polls = _context.Polls.ToList();
 
-            return View();
+            return View(polls);
         }
     }
 }
