@@ -18,9 +18,17 @@ namespace OnlinePollingSystem.Controllers
             _context = new ApplicationDbContext();
         }
 
-        // GET: Poll
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+        // GET: Poll / Index 
+
         public ActionResult Index()
         {
+            var polls = _context.Polls
+
             return View();
         }
     }

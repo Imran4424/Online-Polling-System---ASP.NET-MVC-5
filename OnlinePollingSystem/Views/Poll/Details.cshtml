@@ -9,9 +9,9 @@
 <h2>Details</h2>
 
 <div class="jumbotron">
-    <h1> @Model.Post.Title </h1>
-    <p class="lead"> @Model.Post.PostedBy </p>
-    <p> @Model.Post.PostDate.ToString("d MMM yyyy") </p>
+    <h1> @Model.Poll.Title </h1>
+    <p class="lead"> @Model.Poll.PostDate </p>
+    <p> @Model.Poll.PostDate.ToString("d MMM yyyy") </p>
 
 </div>
 
@@ -22,7 +22,7 @@
     </div>
 }
 
-@using (Html.BeginForm("NewOption", "Poll", Model.Post))
+@using (Html.BeginForm("NewOption", "Poll", Model.Poll))
 {
 
 

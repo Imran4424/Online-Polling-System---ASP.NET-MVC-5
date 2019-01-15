@@ -7,7 +7,7 @@ namespace OnlinePollingSystem.Models
 {
     public class NewPollViewModel
     {
-        public Poll Post { get; set; }
+        public Poll Poll { get; set; }
 
         public Option OptionOne { get; set; }
 

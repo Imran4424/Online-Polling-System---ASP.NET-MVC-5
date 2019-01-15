@@ -7,7 +7,7 @@ namespace OnlinePollingSystem.Models
 {
     public class DetailsViewModel
     {
-        public Poll Post { get; set; }
+        public Poll Poll { get; set; }
 
         public IEnumerable<Option> Options { get; set; }
 
