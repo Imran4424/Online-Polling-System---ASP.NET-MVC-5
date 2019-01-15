@@ -31,6 +31,10 @@ namespace OnlinePollingSystem.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Poll> Polls { get; set; }
+
+        public DbSet<Option> Options { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

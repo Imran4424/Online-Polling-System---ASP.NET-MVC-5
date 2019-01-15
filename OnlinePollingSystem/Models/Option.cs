@@ -6,7 +6,7 @@ using System.Web;
 
 namespace OnlinePollingSystem.Models
 {
-    public class Options
+    public class Option
     {
         public int Id { get; set; }
 
@@ -14,7 +14,10 @@ namespace OnlinePollingSystem.Models
         public string OptionName { get; set; }
 
 
-        public string CheckedBy { get; set; }
+        public List<string> CheckedBy { get; set; }
+
+        [Required]
+        public int VoteCount { get; set; }
 
         [Required]
         public int PostId { get; set; }
