@@ -21,5 +21,11 @@ namespace OnlinePollingSystem.Models
 
         [Required]
         public int PostId { get; set; }
+
+        public Option()
+        {
+            VoteCount = 0;
+            CheckedBy = new List<string>();
+        }
     }
 }

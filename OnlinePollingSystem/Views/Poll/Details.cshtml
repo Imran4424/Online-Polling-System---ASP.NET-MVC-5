@@ -1,0 +1,21 @@
+﻿@model OnlinePollingSystem.Models.DetailsViewModel
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="jumbotron">
+    <h1> @Model.Post.Title </h1>
+    <p class="lead"> @Model.Post.PostedBy </p>
+    <p> @Model.Post.PostDate.ToString("d MMM yyyy") </p>
+
+</div>
+
+@foreach (var comment in Model.Options)
+{
+   @Html.CheckBoxFor
+}
