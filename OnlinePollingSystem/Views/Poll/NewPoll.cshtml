@@ -1,0 +1,24 @@
+﻿@model OnlinePollingSystem.Models.NewPollViewModel
+
+@{
+    ViewBag.Title = "NewPoll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Save", "Poll"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Post.Title);
+        @Html.TextBoxFor(m => m.Post.Title, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.OptionOne.OptionName);
+        @Html.TextAreaFor(m => m.OptionOne.OptionName, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-primary"> Save </button>
+}
+
+

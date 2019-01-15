@@ -11,8 +11,5 @@ namespace OnlinePollingSystem.Models
 
         public Option OptionOne { get; set; }
 
-        public Option OptionTwo { get; set; }
-
-        public Option OptionThree { get; set; }
     }
 }

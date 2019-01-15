@@ -109,3 +109,4 @@ E:\WARRIOR\WEB\ASP.NET MVC 5\OnlinePollingSystem\OnlinePollingSystem\obj\Debug\O
 E:\WARRIOR\WEB\ASP.NET MVC 5\OnlinePollingSystem\OnlinePollingSystem\obj\Debug\OnlinePollingSystem.pdb
 E:\WARRIOR\WEB\ASP.NET MVC 5\OnlinePollingSystem\OnlinePollingSystem\obj\Debug\OnlinePollingSystem.Migrations.InitialModel.resources
 E:\WARRIOR\WEB\ASP.NET MVC 5\OnlinePollingSystem\OnlinePollingSystem\obj\Debug\OnlinePollingSystem.csproj.GenerateResource.cache
+E:\WARRIOR\WEB\ASP.NET MVC 5\OnlinePollingSystem\OnlinePollingSystem\obj\Debug\OnlinePollingSystem.Migrations.OptionBoolStatus.resources

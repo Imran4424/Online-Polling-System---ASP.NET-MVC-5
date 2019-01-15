@@ -15,7 +15,24 @@
 
 </div>
 
-@foreach (var comment in Model.Options)
+@foreach (var option in Model.Options)
 {
-   @Html.CheckBoxFor
+    <div class="checkbox">
+        @Html.CheckBox(option.OptionName, option.Status, new { @class = "checkbox" })
+    </div>
+}
+
+@using (Html.BeginForm("NewOption", "Poll", Model.Post))
+{
+
+
+    var option = Model.NewOption;
+
+    <div class="form-group">
+
+        @Html.TextBoxFor(m => option.OptionName, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => option.Id)
+    <button type="submit" class="btn btn-primary"> New Option </button>
 }
