@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Save", "Poll"))
+@using (Html.BeginForm("Save", "Poll", Model.OptionOne))
 {
     <div class="form-group">
         @Html.LabelFor(m => m.Poll.Title);
@@ -18,6 +18,7 @@
     </div>
 
     @Html.HiddenFor(m => m.Poll.Id)
+    @Html.HiddenFor(m => m.OptionOne.Id)
     <button type="submit" class="btn btn-primary"> Save </button>
 }
 

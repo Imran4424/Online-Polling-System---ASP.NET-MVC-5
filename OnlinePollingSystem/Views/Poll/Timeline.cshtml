@@ -1,8 +1,46 @@
-﻿
+﻿@model IEnumerable<OnlinePollingSystem.Models.Poll>
+
 @{
-    ViewBag.Title = "Timeline";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Timeline</h2>
+<h2> Home </h2>
 
+<p>
+    @Html.ActionLink("New Poll", "NewPoll", "Poll", null, new { @class = "btn btn-primary" })
+</p>
+
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th> Title </th>
+            <th> User </th>
+            <th> Date </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var poll in Model)
+        {
+        <tr>
+            <td> @Html.ActionLink(poll.Title, "Details", "Poll", new { poll.Id }, null)</td>
+
+
+            <td> @poll.PostedBy </td>
+
+            <td> @poll.PostDate </td>
+
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", "Poll", new { poll.Id }, null)*@
+                @Html.ActionLink("Delete", "Delete", "Poll", new { poll.Id }, null)
+            </td>
+
+        </tr>
+
+        }
+    </tbody>
+</table>

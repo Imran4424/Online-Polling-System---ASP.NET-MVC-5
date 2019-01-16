@@ -45,7 +45,74 @@ namespace OnlinePollingSystem.Controllers
 
         // GET: Poll / Details
         
+        public ActionResult Details(int id)
+        {
+            var detailsModel = new DetailsViewModel
+            {
+                Poll = _context.Polls.SingleOrDefault(p => p.Id == id),
+                Options = _context.Options.Where(p => p.PostId == id).ToList()
+            };
 
-        
+            return View(detailsModel);
+        }
+
+        // GET: Poll / NewPoll
+
+        public ActionResult NewPoll()
+        {
+            var newPoll = new NewPollViewModel
+            {
+                Poll = new Poll(),
+                OptionOne = new Option()
+            };
+
+            return View(newPoll);
+        }
+
+
+        [HttpPost]
+        public ActionResult Save(Poll poll, Option option)
+        {
+            string currentUserId = User.Identity.GetUserId();
+
+            var currentUserInfo = _context.Users.SingleOrDefault(u => u.Id == currentUserId);
+
+            poll.UserIdentity = currentUserId;
+
+            poll.PostedBy = currentUserInfo.Name;
+
+            poll.PostDate = DateTime.Today;
+
+            _context.Polls.Add(poll);
+
+            option.PostId = poll.Id;
+            option.VoteCount = 0;
+            option.Status = false;
+
+            _context.Options.Add(option);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Details", "Poll", poll);
+        }
+
+
+        // GET: Post / Delete
+
+        public ActionResult Delete(int id)
+        {
+            var poll = _context.Polls.SingleOrDefault(p => p.Id == id);
+
+            var options = _context.Options.Where(m => m.PostId == id).ToList();
+
+            _context.Polls.Remove(poll);
+
+            _context.Options.RemoveRange(options);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Timeline", "Poll");
+        }
+
     }
 }
