@@ -19,8 +19,12 @@
 {
     <div class="checkbox">
         @Html.CheckBox(option.OptionName, option.Status, new { @class = "checkbox" })
+        @option.OptionName
+        @option.VoteCount
     </div>
 }
+
+    <br />
 
 @using (Html.BeginForm("NewOption", "Poll", Model.Poll))
 {

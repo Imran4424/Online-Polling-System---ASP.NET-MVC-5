@@ -71,31 +71,57 @@ namespace OnlinePollingSystem.Controllers
 
 
         [HttpPost]
-        public ActionResult Save(Poll poll, Option option)
+        public ActionResult Save(NewPollViewModel newPoll)
         {
             string currentUserId = User.Identity.GetUserId();
 
             var currentUserInfo = _context.Users.SingleOrDefault(u => u.Id == currentUserId);
 
-            poll.UserIdentity = currentUserId;
+            newPoll.Poll.UserIdentity = currentUserId;
 
-            poll.PostedBy = currentUserInfo.Name;
+            newPoll.Poll.PostedBy = currentUserInfo.Name;
 
-            poll.PostDate = DateTime.Today;
+            newPoll.Poll.PostDate = DateTime.Today;
 
-            _context.Polls.Add(poll);
+            _context.Polls.Add(newPoll.Poll);
+
+            _context.SaveChanges();
+
+            
+
+            newPoll.OptionOne.PostId = _context.Polls.Max(lastPoll => lastPoll.Id);
+            newPoll.OptionOne.VoteCount = 1;
+            newPoll.OptionOne.Status = true;
+            newPoll.OptionOne.CheckedBy.Add(currentUserInfo.Name);
+
+            _context.Options.Add(newPoll.OptionOne);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Details", "Poll", newPoll.Poll);
+        }
+
+
+
+        // GET: Post / NewOption
+
+        [HttpPost]
+        public ActionResult NewOption(Option option, Poll poll)
+        {
+            string currentUserId = User.Identity.GetUserId();
+
+            var currentUserInfo = _context.Users.SingleOrDefault(u => u.Id == currentUserId);
 
             option.PostId = poll.Id;
-            option.VoteCount = 0;
-            option.Status = false;
+            option.VoteCount = 1;
+            option.CheckedBy.Add(currentUserInfo.Name);
+            option.Status = true;
 
             _context.Options.Add(option);
-
             _context.SaveChanges();
 
             return RedirectToAction("Details", "Poll", poll);
         }
-
 
         // GET: Post / Delete
 
